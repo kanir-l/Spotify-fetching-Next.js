@@ -6,14 +6,17 @@ type Data = {
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-  let ACCESS_TOKEN: string = ""
+  let tokenFromSS = String(req.query.token)
+  let ACCESS_TOKEN: string = tokenFromSS
 
   try {
-    if(!ACCESS_TOKEN) {
+    if(!tokenFromSS) {
+      ACCESS_TOKEN = tokenFromSS
+    } else {
       const response = await getToken()
       const data = await response.json();
       ACCESS_TOKEN = data.access_token;
-      res.status(200).json({ data: ACCESS_TOKEN })
+      res.status(200).json({ data: data.access_token })
     }
   } catch (error) {
     res.status(400)

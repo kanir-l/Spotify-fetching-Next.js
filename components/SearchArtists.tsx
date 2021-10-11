@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 
 interface IArtists {
     name: string,
@@ -9,6 +9,10 @@ interface IArtists {
 const SearchArtists = () => {
     let defaultResults: IArtists[] = []
     const [searchResults, setSearchResults] = useState(defaultResults)
+
+    useEffect(() => {
+        setTimeout(() => { sessionStorage.clear() }, (1000 * 60 * 60));
+    }, [])
    
     const inputSearch = (e: ChangeEvent<HTMLInputElement>) => {
         const tokenFromSS = sessionStorage.getItem('myToken')
@@ -16,11 +20,11 @@ const SearchArtists = () => {
             fetch(`/api/spotify/auth/${tokenFromSS}`)
                 .then(response => response.json())
                 .then(data => {
-                    sessionStorage.setItem('myToken', data.token)
+                    sessionStorage.setItem('myToken', data.data)
             })
         }
 
-        fetch(`/api/spotify/${e.target.value}?access_token=${tokenFromSS}`)
+        fetch(`/api/spotify/artists/${e.target.value}?access_token=${tokenFromSS}`)
             .then(response => response.json())
             .then(data => {
                 const searchData = data.data
@@ -31,7 +35,7 @@ const SearchArtists = () => {
     const printSearchResults = searchResults.map((artist) => {
         return (
             <div className = "searchresult-container" key={artist.id}>
-                    <Link href = {`/artists/${artist.name}`}>
+                    <Link href = {`/artists/${artist.id}?artist_name=${artist.name}`}>
                         {artist.name}
                     </Link> 
             </div> 
@@ -59,4 +63,3 @@ const SearchArtists = () => {
   
 
 export default SearchArtists
-
