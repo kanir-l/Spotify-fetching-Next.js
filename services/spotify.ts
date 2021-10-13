@@ -48,3 +48,4 @@ export const getArtistsAlbums = (artistId: string, accessToken: string) => {
 
   return fetch(`https://api.spotify.com/v1/artists/${artistId}/albums`, requestOptions)
 }
+
