@@ -26,15 +26,16 @@ export default artist
     const data = await response.json()
     const artistAlbums = data.items
 
-    /*const response = await fetch(`http://localhost:3000/api/spotify/albums/${artistId}?access_token=${tokenFromCookies}`)
+    const response = await fetch(`http://localhost:3000/api/spotify/albums/${artistId}?access_token=${tokenFromCookies}`)
             const data = await response.json()
-            const artistAlbums = data.data  */
+            const artistAlbums = data.data  
 
-   /*  return {
+   return {
         props: {
             artistAlbums: artistAlbums,
             tokenFromCookies: tokenFromCookies
             
         }
-    } */
-}  */
+    }
+}
+*/

@@ -14,8 +14,8 @@ export const setCookie = (
   const stringValue =
     typeof value === 'object' ? 'j:' + JSON.stringify(value) : String(value)
 
-  if (options && 'maxAge' in options) {
-    options.expires = new Date(Date.now() + (options.maxAge * 1000 * 60))
+  if (options.maxAge) {
+    options.expires = new Date(Date.now() + options.maxAge)
   }
 
   const serializeCookie = serialize(name, stringValue, options)
