@@ -3,7 +3,7 @@ export interface IArtists {
     id: string
 }[]
 
-export interface IAlbum {
+export interface IAlbums {
     name: string
     id: string
 }[]

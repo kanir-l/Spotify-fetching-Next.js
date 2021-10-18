@@ -1,7 +1,10 @@
-import { IAlbum } from "../interfaces/spotify"
+import { IAlbums } from "../interfaces/spotify"
+import styles from './ViewAlbums.module.scss';
 
 interface Props {
-    artistAlbums: IAlbum[]
+    artistName: string,
+    artistImage: img,
+    artistAlbums: IAlbums[]
 }
 
 const ArtistAlbums = ( props: Props ) => {
@@ -33,15 +36,28 @@ const ArtistAlbums = ( props: Props ) => {
 
     const printAlbums = props.artistAlbums.map((album) => {
         return (
-            <div className = "searchresult-container" key={album.id}>
-                <div>{album.name}</div> 
-            </div> 
+                <ul className="width-90% bg-black opacity-80% padding-lg margin-xs radius-lg flex justify-center justify-between flex-center" key={album.id}>
+                    <li className="color-white">Album: {album.name}</li> 
+                    <li>Release Date: {album.release_date}</li> 
+                    <li>Total Tracks: {album.total_tracks}</li> 
+                    <div>{album.images[2] && <img className="margin-right-lg object-contain" src={album.images[2].url}/>}</div>
+                </ul> 
         )
     })     
 
     return(
         <> 
-            {printAlbums}  
+            <section className={styles.backgroundImg}>
+                <div className={styles.nameBackground}>
+                    <h1 className="color-white font-bold">
+                        {props.artistName}
+                    </h1>
+                </div>
+               
+                <div className="flex flex-column justify-center flex-center">
+                    {printAlbums}
+                </div>  
+            </section>
         </>
     )
 }

@@ -10,11 +10,16 @@
   },
   "dependencies": {
     "axios": "^0.22.0",
+    "codyhouse-framework": "^3.0.2",
     "cookie": "^0.4.1",
+    "gulp": "^3.9.1",
     "js-cookie": "^3.0.1",
     "next": "11.1.2",
+    "next-images": "^1.8.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sass": "^1.43.2",
+    "swr": "^1.0.1"
   },
   "devDependencies": {
     "@types/cookie": "^0.4.1",
@@ -22,6 +27,20 @@
     "@types/react": "17.0.27",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
-    "typescript": "4.4.3"
-  }
+    "typescript": "4.4.3",
+    "webpack": "^5.58.2"
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kanir-l/spotify-fetching-Next.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kanir-l/spotify-fetching-Next.js/issues"
+  },
+  "homepage": "https://github.com/kanir-l/spotify-fetching-Next.js#readme"
 }
